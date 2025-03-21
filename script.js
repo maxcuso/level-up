@@ -58,11 +58,16 @@ function calculateExperience(n, m) {
 
     // Расчет общего опыта
     let totalExperience = 0;
+    if (n in experienceTable) {
     for (let level = n + 1; level <= m; level++) {
         if (level in experienceTable) {
             totalExperience += experienceTable[level];
         } else {
+		if (n === 1) {
+			return `Ты кого обмануть пытаешься, чебупель? Не может у тебя быть меньше 2 уровня.`;
+		} else {
             return `Ты правила хоть читал, абоба? ${m} уровня нет в таблице опыта.`;
+		}
         }
     }
 
